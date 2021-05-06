@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Blog;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('vendor.welcome');
-});
+// Route::get('/', function () {
+//     // $recentblogs = Blog::orderby('id','desc')->take(3)->get();
+//     return view('vendor.welcome');
+// });
 
+
+Route::get('/','Vendor\WelcomeController@index');
+Route::get('/home/blog','Vendor\WelcomeController@blog')->name('blogs');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('blog','Vendor\BlogController');
+Route::resource('category','Vendor\CategoryController');
