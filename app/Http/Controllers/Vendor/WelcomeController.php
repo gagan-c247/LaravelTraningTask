@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Blog;
+use App\Comment;
+use App\Category;
+use App\Testimonial;
 
 class WelcomeController extends Controller
 {
@@ -15,14 +18,38 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+
+        $testimonials = Testimonial::with('file')->get();
         $recentblogs = Blog::orderby('id','desc')->with('file','blogcategory')->take(3)->get();
-        return view('vendor.welcome',compact('recentblogs'));
+        return view('vendor.welcome',compact('recentblogs','testimonials'));
     }
 
     public function blog(){
         $blogs = Blog::orderby('id','desc')->with('file','blogcategory')->paginate(4);
-        return view('vendor.blog.blog',compact('blogs'));
+        $allcategory = Category::with('blog')->get();
+        $recentblogs = Blog::orderby('id','desc')->with('file','blogcategory')->take(3)->get();
+        return view('vendor.blog.blog',compact('blogs','allcategory','recentblogs'));
     }
+
+    public function singleblog($slug){
+        $blog = Blog::where('slug',$slug)->with('file','blogcategory','comment','user')->first();
+        $allcategory = Category::with('blog')->get();
+        $recentblogs = Blog::orderby('id','desc')->with('file','blogcategory')->take(3)->get();
+        return view('vendor.blog.singleblog',compact('blog','allcategory','recentblogs'));
+    }
+
+    public function blogCategory($id){
+        // return $id;
+        $allcategory  = Category::get();
+        $recentblogs = Blog::orderby('id','desc')->with('file','blogcategory')->take(3)->get();
+        $blogCategory = Category::find($id);
+        $blogs = $blogCategory->blog()->paginate(3);
+        return view('vendor.blog.categoryblog',compact('blogs','blogCategory','allcategory','recentblogs'));
+    }
+
+
+
+
 
     /**
      * Show the form for creating a new resource.

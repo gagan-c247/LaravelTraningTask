@@ -12,6 +12,6 @@ class BlogCategory extends Model
         return $this->belongsto('App\Category');
     }
     public function blog(){
-        return $this->belongsto('App\Blog');
+        return $this->belongsto('App\Blog')->with('user','file');
     }
 }

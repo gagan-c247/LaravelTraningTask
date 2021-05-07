@@ -7,9 +7,10 @@
 
         <ol>
           <li><a href="{{url('/')}}">Home</a></li>
-          <li>Blog</li>
+          <li><a href="{{route('blogs')}}">Blog</a> </li>
+          <li>{{$blogCategory->name ?? ''}}</li>
         </ol>
-        <h2>Blog</h2>
+        <h2>Category Blog</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -25,11 +26,11 @@
             <article class="entry">
 
                 <div class="entry-img">
-                  <img src="{{'/storage/images/'.$blog->file->filepath}}" alt="" class="img-fluid">
+                  <img src="{{'/storage/images/'.$blog->blog->file->filepath}}" alt="" class="img-fluid">
                 </div>
   
                 <h2 class="entry-title">
-                  <a href="{{route('singleblog',$blog->slug)}}">{{$blog->title ?? 'title not found'}}</a>
+                  <a href="{{route('singleblog',$blog->blog->slug)}}">{{$blog->blog->title ?? 'title not found'}}</a>
                 </h2>
   
                 <div class="entry-meta">
@@ -42,10 +43,10 @@
   
                 <div class="entry-content">
                     <p>
-                        {{$blog->content ?? ''}}
+                        {{$blog->blog->content ?? ''}}
                     </p>
                   <div class="read-more">
-                    <a href="{{route('singleblog',$blog->slug)}}">Read More</a>
+                    <a href="{{route('singleblog',$blog->blog->slug)}}">Read More</a>
                   </div>
                 </div>
   

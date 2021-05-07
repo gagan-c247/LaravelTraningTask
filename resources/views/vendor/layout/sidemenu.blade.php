@@ -18,13 +18,16 @@
         <a class="side-list" href=""  style="pointer-events: none">Pricing</a>
     </div>
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">FAQs</a>
+        <a class="side-list" href="{{route('faq.index')}}" >FAQs</a>
     </div>
     <div class="side-list">
         <a class="side-list" href=""  style="pointer-events: none">Portfolio</a>
     </div>
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">Testimonial</a>
+        <a class="side-list" href="{{route('testimonial.index')}}">Testimonial</a>
+    </div>
+    <div class="side-list">
+        <a class="side-list" href="{{route('testimonial.create')}}">Create Testimonial</a>
     </div>
     <div class="side-list">
         <a  class="side-list" href=""  style="pointer-events: none">Team</a>
@@ -54,7 +57,7 @@
     <div class="side-list"> 
         <a class="side-list" href="{{route('category.index')}}">Category</a>
     </div>
-    <div class="side-list"> 
+    {{-- <div class="side-list"> 
         <a class="side-list" href=""  style="pointer-events: none">Contactus</a>
-    </div>
+    </div> --}}
 </div>

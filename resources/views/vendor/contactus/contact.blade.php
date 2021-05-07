@@ -45,7 +45,8 @@
         </div>
 
         <div class="col-lg-6">
-          <form action="forms/contact.php" method="post" class="php-email-form">
+          <form id="formcontact" action="{{route('contact')}}/#contact" method="post">
+            @csrf
             <div class="row gy-4">
 
               <div class="col-md-6">
@@ -65,11 +66,29 @@
               </div>
 
               <div class="col-md-12 text-center">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                <button type="submit">Send Message</button>
+                {{-- <div class="loading">Loading</div>
+                <div class="error-message"></div> --}}
+                {{-- <div class="sent-message">Your message has been sent. Thank you!</div> --}}
+                @foreach (['success','danger','warning'] as $session)
+                @if (Session::has($session))  
+                <div class="alert alert-{{$session}} alert-dismissible fade show" role="alert">
+                    <strong>{{$session}}!</strong> {{Session::get($session)}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+                @endforeach  
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <button class="btn btn-primary" type="submit">Send Message</button>
               </div>
 
             </div>

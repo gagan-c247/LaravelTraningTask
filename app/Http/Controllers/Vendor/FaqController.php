@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Vendor;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
-use App\Http\Requests\CategoryRequest;
-class CategoryController extends Controller
-{
-    protected $category;
-    public function __construct(Category $category){
-        $this->category = $category;
+use App\FAQ;
+use App\Http\Requests\FaqRequest;
+
+class FaqController extends Controller
+{   
+    protected $faq;
+    public function __construct(FAQ $faq)
+    {
+        $this->faq =$faq;
     }
     /**
      * Display a listing of the resource.
@@ -19,8 +20,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
-        return view('vendor.category.index',compact('categories'))->with('category', $this->category);
+        $faqs = FAQ::orderby('id','desc')->get();
+        return view('vendor.FAQs.index',compact('faqs'))->with('faq',$this->faq);
     }
 
     /**
@@ -30,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+            //
     }
 
     /**
@@ -39,13 +40,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(FaqRequest $request)
     {
         // return $request->all();
-
-        Category::create($request->except(['_token']));
-        session()->flash('success','Inserted Successfully');
-        return redirect()->back();
+        FAQ::Create($request->except(['_token']));
+        session()->flash('success','Faq Inserted Successfully!');
+        return redirect()->back();  
     }
 
     /**
@@ -67,9 +67,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        $categories = Category::get();
-        return view('vendor.category.index',compact('category','categories'));
+        $faq = FAQ::find($id);
+        $faqs = FAQ::orderby('id','desc')->get();
+        return view('vendor.FAQs.index',compact('faq','faqs'));
     }
 
     /**
@@ -79,12 +79,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(FaqRequest $request, $id)
     {
-        // return $request->all();
-        Category::where('id',$id)->update($request->except(['_token','_method']));
-        session()->flash('success','Updated Sucessfully');
-        return redirect()->route('category.index');
+        // return $request->all();  
+        FAQ::where('id',$id)->update($request->except(['_token','_method']));
+        session()->flash('success','Faq Updated Successfully!');
+        return redirect()->route('faq.index');  
     }
 
     /**

@@ -15,7 +15,7 @@
               <div class="post-img"><img src="{{isset($recentblog->file->filepath) ? url('/storage/images/'.$recentblog->file->filepath) :'https://image.shutterstock.com/image-illustration/question-mark-3d-gold-yellow-260nw-719478730.jpg' }}" class="img-fluid" alt=""></div>
               <span class="post-date">Tue, September 15</span>
               <h3 class="post-title">{{$recentblog->title ?? 'Blog title didn\'t found'}}</h3>
-              <a href="blog-singe.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+              <a href="{{route('singleblog',$recentblog->slug)}}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         @empty

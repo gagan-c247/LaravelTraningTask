@@ -16,5 +16,6 @@
 
 <!-- include summernote js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+{{-- ckeditor --}}
+<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 @yield('footer')

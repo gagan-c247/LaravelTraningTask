@@ -19,7 +19,9 @@
             </div> --}}
 
             <form method="post">
-                <textarea id="summernote" name="editordata"></textarea>
+                {{-- <textarea id="summernote" name="editordata"></textarea> --}}
+
+                <textarea name="editor1"></textarea>
               </form>
            
         </div>
@@ -27,9 +29,13 @@
 
 @endsection
 @section('footer')
-<script>
+{{-- <script>
     $(document).ready(function() {
         $('#summernote').summernote();
     });
+</script> --}}
+
+<script>
+    CKEDITOR.replace( 'editor1' );
 </script>
 @endsection
