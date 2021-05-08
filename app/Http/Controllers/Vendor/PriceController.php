@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Setting;
-class AboutusController extends Controller
+class PriceController extends Controller
 {
-    protected $about;
-    public function __construct(Setting $about)
+    protected $price;
+    public function __construct(Setting $price)
     {
-       $this->about = $about;
+        $this->price = $price;
     }
     /**
      * Display a listing of the resource.
@@ -19,11 +19,11 @@ class AboutusController extends Controller
      */
     public function index()
     {
-        $about = Setting::where('type','about')->first();
-        if($about != []){
-            return redirect()->route('about.edit',$about->id);
+        $price = Setting::where('type','price')->first();
+        if($price != []){
+            return redirect()->route('price.edit',$price->id);
         }
-        return view('vendor.aboutus.index')->with('about',$this->about);
+        return view('vendor.pricing.index')->with('price',$this->price);
     }
 
     /**
@@ -45,9 +45,10 @@ class AboutusController extends Controller
     public function store(Request $request)
     {
         // return $request->all();
-        $request['type'] = 'about';
-        $about = Setting::create($request->except(['_token']));
-        return redirect()->route('about.edit',$about->id);
+        $request['type']= 'price';
+        $price = Setting::create($request->except(['_token']));
+        session()->flash('success','Price Inserted Successfully');
+        return redirect()->route('price.edit',$price->id);
     }
 
     /**
@@ -69,8 +70,9 @@ class AboutusController extends Controller
      */
     public function edit($id)
     {
-        $about = Setting::find($id);
-        return view('vendor.aboutus.index',compact('about'));
+        // return $id;
+        $price = Setting::find($id);
+        return view('vendor.pricing.index',compact('price'));
     }
 
     /**
@@ -82,7 +84,7 @@ class AboutusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return $request->all();
     }
 
     /**

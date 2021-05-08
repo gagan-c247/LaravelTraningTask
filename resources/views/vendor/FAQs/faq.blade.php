@@ -8,23 +8,25 @@
       </header>
 
       <div class="row">
-        <div class="col-lg-6">
+        @forelse ($faqs as $key => $faq)
+       
+        <div class="{{ count($faqs) > 3 ? '' : 'offset-3'}} col-lg-6">
           <!-- F.A.Q List 1-->
           <div class="accordion accordion-flush" id="faqlist1">
             <div class="accordion-item">
               <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                  Non consectetur a erat nam at lectus urna duis?
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-{{$key}}">
+                  {{$faq->question ?? ''}} 
                 </button>
               </h2>
-              <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+              <div id="faq-content-{{$key}}" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
                 <div class="accordion-body">
-                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                 {{$faq->answer ?? ''}}
                 </div>
               </div>
             </div>
 
-            <div class="accordion-item">
+            {{-- <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
                   Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
@@ -48,12 +50,16 @@
                   Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
                 </div>
               </div>
-            </div>
+            </div> --}}
 
           </div>
         </div>
+        @empty
+            
+        @endforelse
+       
 
-        <div class="col-lg-6">
+        {{-- <div class="col-lg-6">
 
           <!-- F.A.Q List 2-->
           <div class="accordion accordion-flush" id="faqlist2">
@@ -98,7 +104,7 @@
             </div>
 
           </div>
-        </div>
+        </div> --}}
 
       </div>
 

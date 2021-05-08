@@ -34,4 +34,8 @@ Route::resource('category','Vendor\CategoryController');
 Route::resource('testimonial','Vendor\TestimonialController');
 Route::post('contact','Vendor\ContactController@store')->name('contact');
 Route::resource('faq','Vendor\FaqController');
-
+Route::resource('service','Vendor\ServiceController');
+Route::resource('price','Vendor\PriceController');
+Route::resource('value','Vendor\OurValueController');
+Route::resource('about','Vendor\AboutusController');
+Route::resource('team','Vendor\TeamController');

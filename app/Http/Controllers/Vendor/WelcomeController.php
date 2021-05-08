@@ -8,6 +8,8 @@ use App\Blog;
 use App\Comment;
 use App\Category;
 use App\Testimonial;
+use App\FAQ;
+use App\Setting;
 
 class WelcomeController extends Controller
 {
@@ -18,10 +20,15 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-
         $testimonials = Testimonial::with('file')->get();
         $recentblogs = Blog::orderby('id','desc')->with('file','blogcategory')->take(3)->get();
-        return view('vendor.welcome',compact('recentblogs','testimonials'));
+        $faqs = FAQ::get();
+        $services = Setting::where('type','service')->first();
+        $price = Setting::where('type','price')->first();
+        $value = Setting::where('type','our_values')->first();
+        $about = Setting::where('type','about')->first();
+        $teams =   Setting::where('type','team')->get();
+        return view('vendor.welcome',compact('recentblogs','testimonials','faqs','services','price','value','about','teams'));
     }
 
     public function blog(){

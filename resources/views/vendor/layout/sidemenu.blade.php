@@ -12,7 +12,7 @@
         <a class="side-list" href=""  style="pointer-events: none">Features</a>
     </div>
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">Services</a>
+        <a class="side-list" href="{{route('service.index')}}">Services</a>
     </div>
     <div class="side-list">
         <a class="side-list" href=""  style="pointer-events: none">Pricing</a>
