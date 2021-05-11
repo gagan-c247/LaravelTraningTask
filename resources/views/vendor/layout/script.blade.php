@@ -24,19 +24,30 @@
 
 <script>
   
-    $('.submit').on('click',function(e){
+    $('#conatctSubmit').on('click',function(e){
       var name = $('.name').val();
       var email = $('.email').val();
       var subject = $('.subject').val();
       var message = $('.message').val();
     
+      $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+      e.preventDefault();
+
       console.log(name);
       $.ajax({
-        method: "post",
-        url: "/contact/stores",
-        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        data: {_token:'{{ csrf_token() }}',name:name,email:email,subject:subject,message:message},
-        dataType: "JSON",
+        type: "POST",
+        url: "{{ url('contact/stores') }}",
+        data: { 
+          _token:'{{ csrf_token() }}', 
+          name:name, 
+          email:email, 
+          subject:subject, 
+          message:message
+        },
         success:function(data){
           if(data.status == 'success'){
             console.log(data);

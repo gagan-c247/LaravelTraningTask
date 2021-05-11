@@ -88,7 +88,7 @@
                   </ul>
               </div>
               @endif --}}
-              <button class="btn btn-primary submit">Send Message</button>
+               <button class="btn btn-primary"  id="conatctSubmit" >Send Message</button>
             </div>
 
           </div>

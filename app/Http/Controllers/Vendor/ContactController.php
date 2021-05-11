@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contact;
 use App\Http\Requests\ContactRequest;
+use Validator;
 class ContactController extends Controller
 {
     public function store(ContactRequest $request)
