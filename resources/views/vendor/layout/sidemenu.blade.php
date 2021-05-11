@@ -1,9 +1,9 @@
 <div class="d-flex flex-column align-items-center side-menu">
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">About us</a>
+        <a class="side-list" href="{{route('about.index')}}"  {{--style="pointer-events: none"--}}>About us</a>
     </div>
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">Values</a>
+        <a class="side-list" href="{{route('value.index')}}"  {{--style="pointer-events: none"--}}>Values</a>
     </div>
     <div class="side-list">
         <a class="side-list" href=""  style="pointer-events: none">Counts</a>
@@ -15,7 +15,7 @@
         <a class="side-list" href="{{route('service.index')}}">Services</a>
     </div>
     <div class="side-list">
-        <a class="side-list" href=""  style="pointer-events: none">Pricing</a>
+        <a class="side-list" href="{{route('price.index')}}"  {{--style="pointer-events: none"--}}>Pricing</a>
     </div>
     <div class="side-list">
         <a class="side-list" href="{{route('faq.index')}}" >FAQs</a>
@@ -30,7 +30,7 @@
         <a class="side-list" href="{{route('testimonial.create')}}">Create Testimonial</a>
     </div>
     <div class="side-list">
-        <a  class="side-list" href=""  style="pointer-events: none">Team</a>
+        <a  class="side-list" href="{{route('team.index')}}"  {{--style="pointer-events: none"--}}>Team</a>
     </div>
     <div class="side-list"> 
         <a class="side-list" href=""  style="pointer-events: none">Our Client</a>

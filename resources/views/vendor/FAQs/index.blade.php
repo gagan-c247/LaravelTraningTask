@@ -34,7 +34,7 @@
             {{Form::close()}}
         </div>
         <div class="col-md-8">
-            <table class="table mt-1">
+            <table class="table mt-1 table-striped">
                     <thead>
                         <tr>
                             <th width="40%">Question</th>

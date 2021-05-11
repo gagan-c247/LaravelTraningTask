@@ -7,6 +7,9 @@
     <title>FlexStart Bootstrap Template - Index</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
     @include('vendor.layout.style')
 </head>
 
@@ -29,24 +32,40 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a href="blog.html">Blog</a></li>
+          <li><a href="{{route('blogs')}}">Blog</a></li>
           @endif
           @auth
             <li><a href="{{ url('/home') }}">Home2</a></li>
             <li class="dropdown"><a href="#"><span class="text-capitalize"> {{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="#">Drop Down 1</a></li>
-                <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <li><a href="{{route('about.index')}}">About us</a></li>
+                <li><a href="{{route('value.index')}}">values</a></li>
+                <li><a href="#" style="pointer-events: none">counts</a></li>
+                <li><a href="#" style="pointer-events: none">features</a></li>
+                <li><a href="{{route('service.index')}}">Services</a></li>
+                <li><a href="{{route('price.index')}}">pricing</a></li>
+                <li><a href="{{route('faq.index')}}">FAQs</a></li>
+                <li><a href="" style="pointer-events: none">portfolio</a></li>
+                <li class="dropdown"><a href="#"><span>Testimonail</span> <i class="bi bi-chevron-right"></i></a>
                   <ul>
-                    <li><a href="#">Deep Drop Down 1</a></li>
-                    <li><a href="#">Deep Drop Down 2</a></li>
-                    <li><a href="#">Deep Drop Down 3</a></li>
-                    <li><a href="#">Deep Drop Down 4</a></li>
-                    <li><a href="#">Deep Drop Down 5</a></li>
+                    <li><a href="{{route('testimonial.create')}}">Add Testimonial</a></li>
+                    <li><a href="{{route('testimonial.index')}}">All Testimonial</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Drop Down 2</a></li>
-                <li><a href="#">Drop Down 3</a></li>
+                <li class="dropdown"><a href="#"><span>Team</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="{{route('team.create')}}">Add Team Member</a></li>
+                    <li><a href="{{route('team.index')}}">All Team Member</a></li>
+                  </ul>
+                </li>
+                <li><a href="" style="pointer-events: none">our client</a></li>
+                <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    <li><a href="{{route('blog.create')}}">Add blog</a></li>
+                    <li><a href="{{route('blog.index')}}">All blog</a></li>
+                    <li><a href="{{route('category.index')}}">Category</a></li>
+                  </ul>
+                </li>
                 <li><a href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

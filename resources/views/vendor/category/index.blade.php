@@ -46,7 +46,7 @@
     </div>
     <div class="col-md-8">
         <div class="white-box">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Name</th>

@@ -10,9 +10,17 @@ class ContactController extends Controller
 {
     public function store(ContactRequest $request)
     {
-        // return $request->all();
+         return $request;
         Contact::create($request->except(['_token']));
         session()->flash('success','Your message has been sent. Thank you!');
         return redirect()->back();
+    }
+
+    public function contactstore(Request $request)
+    {
+        return $request;
+        $data = Contact::create($request->except(['_token']));
+        session()->flash('success','Your message has been sent. Thank you!');
+        return response()->json('data');
     }
 }

@@ -10,6 +10,7 @@ use App\Category;
 use App\Testimonial;
 use App\FAQ;
 use App\Setting;
+use DB;
 
 class WelcomeController extends Controller
 {
@@ -55,7 +56,76 @@ class WelcomeController extends Controller
     }
 
 
+    public function blogsearch(Request $request){
+        // return $request->all();
+        
+        if($request->ajax()){
+            $output = '';
+            $query = $request->search;
+            if($query != '')
+            {
+                $data = DB::table('blogs as b')
+                    ->select('b.id','b.title','b.content','b.slug','f.filepath')
+                    ->leftjoin('files as f', 'f.id','=','b.file_id')
+                    ->where('title', 'like', '%'.$query.'%')
+                    ->orderBy('id', 'desc')
+                    ->get();
+            }
+            else
+            {
+                $data = DB::table('blogs')
+                    ->orderBy('id', 'desc')
+                    ->get();
+            }
+            $total_row = $data->count();
+            if($total_row > 0)
+            {
+                foreach($data as $blog)
+                {
+                    $output .= '<article class="entry">';
+                    $output .=      '<div class="entry-img">';
+                    $output .=          '<img src="'.'/storage/images/'.$blog->filepath.'" alt="" class="img-fluid">';
+                    $output .=      '</div>';
+                    $output .=       '<h2 class="entry-title">';     
+                    $output .=          '<a href="'.route('singleblog',$blog->slug).'">'.$blog->title ?? 'title not found'.'</a>';
+                    $output .=        '</h2>';
+                    $output .=        '<div class="entry-meta">';
+                    $output .=          '<ul>';
+                    $output .=              '<li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>';
+                    $output .=              '<li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>';
+                    $output .=              '<li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>';
+                    $output  .=         '</ul>';
+                    $output .=      '</div>';
+                    $output .=      '<div class="entry-content">';
+                    $output .=          '<p>';
+                    $output .=              "$blog->content ?? ''";
+                    $output .=          '</p>';
+                    $output .=          '<div class="read-more">';
+                    $output .=              '<a href="'.route('singleblog',$blog->slug).'">Read More</a>';
+                    $output .=           '</div>';
+                    $output .=      '</div>';
+                    $output .='</article>';
+                }
+            }
+            else
+            {
+                $output = '
+                <article class="entry">
 
+                    <div class="entry-img">
+                        <img src="https://image.shutterstock.com/image-illustration/question-mark-3d-gold-yellow-260nw-719478730.jpg" alt="" class="img-fluid">
+                    </div>
+                
+                    <h2 class="entry-title">
+                         <a href="" > No Blog Present yet</a>
+                    </h2>
+                </article>
+                ';
+            }
+            echo json_encode(['blog'=>$output,'status'=>'success']);
+        }
+        
+    }
 
 
     /**

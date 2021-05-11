@@ -12,6 +12,7 @@
 
 <!-- include libraries(jQuery, bootstrap) -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+ 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- include summernote js -->
@@ -19,3 +20,53 @@
 {{-- ckeditor --}}
 <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 @yield('footer')
+
+
+<script>
+  
+    // $('#contactus').submit(function(e){
+    //   var name = $('.name').val();
+    //   var email = $('.email').val();
+    //   var subject = $('.subject').val();
+    //   var message = $('.message').val();
+    
+
+    //   $.ajax({
+    //     method: "post",
+    //     url: "/contact/stores",
+    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //     data: {_token:'{{ csrf_token() }}',name:name,email:email,subject:subject,message:message},
+    //     dataType: "JSON",
+    //     success:function(data){
+    //     console.log(data);
+    //     }
+        
+    //   });
+
+    // });
+
+</script>
+
+<script>
+   $(document).ready(function(){
+
+    var search = function(){
+      // alert();
+
+      $.ajax({
+        method: "Post",
+        url: "{{route('blogsearch')}}",
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: { search: $('.blogsearch').val()},
+        dataType: "JSON",
+        success: function(data){
+                  if(data.status == 'success'){
+                      $('.entries').html(data.blog);
+                  }
+                }
+      });
+    }
+    $('.blogsearch').change(search);
+    $('.blogsearch').keypress(search);
+ });
+</script>

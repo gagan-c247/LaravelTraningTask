@@ -2,10 +2,10 @@
 
     <h3 class="sidebar-title">Search</h3>
     <div class="sidebar-item search-form">
-      <form action="">
-        <input type="text">
-        <button type="submit"><i class="bi bi-search"></i></button>
-      </form>
+      {{-- <form action=""> --}}
+        <input type="text" class="blogsearch" placeholder="">
+        <a href="{{route('blogs')}}"> <span class="bg bg-primary text-white p-2"><i class="fa fa-undo"></i></span></button> 
+      {{-- </form> --}}
     </div><!-- End sidebar search formn-->
 
     <h3 class="sidebar-title">Categories</h3>

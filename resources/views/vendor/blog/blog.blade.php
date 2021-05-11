@@ -49,7 +49,7 @@
                   </div>
                 </div>
   
-              </article><!-- End blog entry -->
+            </article><!-- End blog entry -->
             @empty
                 <article class="entry">
 
@@ -62,7 +62,7 @@
                     </h2>
                 </article>
             @endforelse
-           
+            
             @if(isset($blogs) && $blogs != [])
                 <div class="blog-pagination">
                 <ul class="justify-content-center">
@@ -71,9 +71,6 @@
                             <a href="{{$blogs->url($i)}}">{{$i}}</a>
                         </li>
                     @endfor
-                   
-                    {{-- <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li> --}}
                 </ul>
                 </div>
             @endif

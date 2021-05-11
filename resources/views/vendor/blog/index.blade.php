@@ -1,7 +1,7 @@
 @extends('vendor.layout',['title'=>'All Blogs'])
 @section('content')
 <div class="table-responsive">
-    <table class="table no-wrap">
+    <table class="table no-wrap table-striped">
         <thead>
             <tr>
                 <th class="border-top-0" width="10%">#</th>

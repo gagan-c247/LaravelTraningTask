@@ -45,24 +45,23 @@
         </div>
 
         <div class="col-lg-6">
-          <form id="formcontact" action="{{route('contact')}}/#contact" method="post">
-            @csrf
+          <form id="contactus"  method="post">
+           @csrf
             <div class="row gy-4">
-
               <div class="col-md-6">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                <input type="text" name="name" class="form-control name" placeholder="Your Name" required>
               </div>
 
               <div class="col-md-6 ">
-                <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                <input type="email" class="form-control email" name="email" placeholder="Your Email" required>
               </div>
 
               <div class="col-md-12">
-                <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                <input type="text" class="form-control subject" name="subject" placeholder="Subject" required>
               </div>
 
               <div class="col-md-12">
-                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                <textarea class="form-control message" name="message" rows="6" placeholder="Message" required></textarea>
               </div>
 
               <div class="col-md-12 text-center">
@@ -79,7 +78,7 @@
                 </div>
                 @endif
                 @endforeach  
-                @if (count($errors) > 0)
+                {{-- @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
                         @foreach ($errors->all() as $error)
@@ -87,7 +86,7 @@
                         @endforeach
                     </ul>
                 </div>
-                @endif
+                @endif --}}
                 <button class="btn btn-primary" type="submit">Send Message</button>
               </div>
 

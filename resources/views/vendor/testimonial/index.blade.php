@@ -3,7 +3,7 @@
     
 @endsection
 @section('content')
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th width="20%">Name</th>

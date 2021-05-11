@@ -16,26 +16,11 @@
 
                     {{ __('You are logged in!') }}
                 </div>
-            </div> --}}
-
-            <form method="post">
-                {{-- <textarea id="summernote" name="editordata"></textarea> --}}
-
-                <textarea name="editor1"></textarea>
-              </form>
-           
+            </div> --}}   
+            <h1>Welcome</h1>        
         </div>
     </div>
 
 @endsection
 @section('footer')
-{{-- <script>
-    $(document).ready(function() {
-        $('#summernote').summernote();
-    });
-</script> --}}
-
-<script>
-    CKEDITOR.replace( 'editor1' );
-</script>
 @endsection

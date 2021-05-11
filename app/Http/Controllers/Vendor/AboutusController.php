@@ -82,7 +82,9 @@ class AboutusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request->all();
+        $about = Setting::create($request->except(['_token','_method']));
+        return redirect()->route('about.edit',$about->id);
     }
 
     /**
