@@ -24,26 +24,29 @@
 
 <script>
   
-    // $('#contactus').submit(function(e){
-    //   var name = $('.name').val();
-    //   var email = $('.email').val();
-    //   var subject = $('.subject').val();
-    //   var message = $('.message').val();
+    $('.submit').on('click',function(e){
+      var name = $('.name').val();
+      var email = $('.email').val();
+      var subject = $('.subject').val();
+      var message = $('.message').val();
     
-
-    //   $.ajax({
-    //     method: "post",
-    //     url: "/contact/stores",
-    //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    //     data: {_token:'{{ csrf_token() }}',name:name,email:email,subject:subject,message:message},
-    //     dataType: "JSON",
-    //     success:function(data){
-    //     console.log(data);
-    //     }
+      console.log(name);
+      $.ajax({
+        method: "post",
+        url: "/contact/stores",
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        data: {_token:'{{ csrf_token() }}',name:name,email:email,subject:subject,message:message},
+        dataType: "JSON",
+        success:function(data){
+          if(data.status == 'success'){
+            console.log(data);
+            window. location. reload(); 
+          }
+        }
         
-    //   });
+      });
 
-    // });
+    });
 
 </script>
 

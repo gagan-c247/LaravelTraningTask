@@ -45,53 +45,56 @@
         </div>
 
         <div class="col-lg-6">
-          <form id="contactus"  method="post">
+          <div class="contactus">
+        <form  id="contactFormId">
            @csrf
-            <div class="row gy-4">
-              <div class="col-md-6">
-                <input type="text" name="name" class="form-control name" placeholder="Your Name" required>
-              </div>
-
-              <div class="col-md-6 ">
-                <input type="email" class="form-control email" name="email" placeholder="Your Email" required>
-              </div>
-
-              <div class="col-md-12">
-                <input type="text" class="form-control subject" name="subject" placeholder="Subject" required>
-              </div>
-
-              <div class="col-md-12">
-                <textarea class="form-control message" name="message" rows="6" placeholder="Message" required></textarea>
-              </div>
-
-              <div class="col-md-12 text-center">
-                {{-- <div class="loading">Loading</div>
-                <div class="error-message"></div> --}}
-                {{-- <div class="sent-message">Your message has been sent. Thank you!</div> --}}
-                @foreach (['success','danger','warning'] as $session)
-                @if (Session::has($session))  
-                <div class="alert alert-{{$session}} alert-dismissible fade show" role="alert">
-                    <strong>{{$session}}!</strong> {{Session::get($session)}}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                @endif
-                @endforeach  
-                {{-- @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif --}}
-                <button class="btn btn-primary" type="submit">Send Message</button>
-              </div>
-
+           <div class="row gy-4">
+            <div class="col-md-6">
+              <input type="text" name="name" class="form-control name" placeholder="Your Name" required>
             </div>
-          </form>
+
+            <div class="col-md-6 ">
+              <input type="email" class="form-control email" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="col-md-12">
+              <input type="text" class="form-control subject" name="subject" placeholder="Subject" required>
+            </div>
+
+            <div class="col-md-12">
+              <textarea class="form-control message" name="message" rows="6" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              {{-- <div class="loading">Loading</div>
+              <div class="error-message"></div> --}}
+              {{-- <div class="sent-message">Your message has been sent. Thank you!</div> --}}
+              @foreach (['success','danger','warning'] as $session)
+              @if (Session::has($session))  
+              <div class="alert alert-{{$session}} alert-dismissible fade show" role="alert">
+                  <strong>{{$session}}!</strong> {{Session::get($session)}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              @endif
+              @endforeach  
+              {{-- @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+              @endif --}}
+              <button class="btn btn-primary submit">Send Message</button>
+            </div>
+
+          </div>
+        </form>
+          </div>
+        
 
         </div>
 
